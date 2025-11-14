@@ -1,75 +1,77 @@
-import model from "../models/illustration.model.js"
+import model from "../models/illustration.model.js";
 
-function findAll(request, response) {
-    model.findAll({ raw: true })
-    .then(function (res) {
-        response.status(200).json(res);
-    })
-    .catch(function (err) {
-        response.status(500).json(err);
-    });
-}
-
-
-function findById(request, response) {
-    model.findByPk(request.params.id)
-    .then(function (res) {
-        response.status(200).json(res)
-    })
-    .catch(function (err) {
-        response.status(500).json(err)
-    })
-}
-
-function create(request, response) {
-    model.create({
-        title: request.body.title,
-        description: request.body.description,
-        path: request.body.path,
-    })
-    .then(function (res) {
-        response.status(201).json(res)
-    })
-    .catch(function (err) {
-        response.status(500).json(err)
-    })
-}
-
-function deleteByPk(request, response) {
-    model
-    .destroy({ where: { id: request.params.id } })
-    .then(function (count) {
-        if (count === 0) {
-            return response.status(404).json({ message: "Not found" });
-        }
-
-        return response.status(200).json({ message: "Deleted" });
-    })
-    .catch(function (err) {
-        return response.status(500).json(err);
-    });
-}
-
-export async function update(request, response) {
+// GET all
+async function findAll(req, res) {
     try {
-        const id = request.params.id;
-
-        const instance = await model.findByPk(id);
-        if (!instance) {
-            return response.status(404).json({ message: "Not found" });
-        }
-
-        // Use request.body instead of req.body
-        await instance.update(request.body);
-
-        return response.status(200).json({
-            message: "Updated",
-            data: instance
-        });
+        const resData = await model.findAll({ raw: true });
+        res.status(200).json(resData);
     } catch (err) {
-        return response.status(500).json(err);
+        res.status(500).json(err);
     }
 }
 
+// GET by ID
+async function findById(req, res) {
+    try {
+        const instance = await model.findByPk(req.params.id);
+        if (!instance) return res.status(404).json({ message: "Not found" });
+        res.status(200).json(instance);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
 
-export default { findAll, findById, create, deleteByPk, update}
+// CREATE
+async function create(req, res) {
+    try {
+        // Store only the object key in the DB
+        const path = req.file ? req.file.key : req.body.path;
+
+        const illustration = await model.create({
+            title: req.body.title,
+            description: req.body.description,
+            path,
+        });
+
+        res.status(201).json(illustration);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+}
+
+// UPDATE
+async function update(req, res) {
+    try {
+        const instance = await model.findByPk(req.params.id);
+        if (!instance) return res.status(404).json({ message: "Not found" });
+
+        // Determine new path
+        const path = req.file ? req.file.key : instance.path;
+
+        await instance.update({
+            title: req.body.title,
+            description: req.body.description,
+            path,
+        });
+
+        res.status(200).json({ message: "Updated", data: instance });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+}
+
+// DELETE
+async function deleteByPk(req, res) {
+    try {
+        const count = await model.destroy({ where: { id: req.params.id } });
+        if (count === 0) return res.status(404).json({ message: "Not found" });
+        res.status(200).json({ message: "Deleted" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+}
+
+export default { findAll, findById, create, update, deleteByPk };
