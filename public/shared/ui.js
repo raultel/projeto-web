@@ -114,7 +114,7 @@ export async function buildCard(model, item) {
                 const res = await fetch(`/api/image/${item[key]}`);
                 if (!res.ok) throw new Error("Image not found");
                 const data = await res.json();
-                value = `<img src="${data.url}" alt="${key}" style="max-width:200px; height:auto;">`;
+                value = `<img src="${data.url}" alt="${key}">`;
             } catch (err) {
                 console.error("Failed to load image", err);
                 value = "Image not available";

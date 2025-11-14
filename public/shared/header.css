@@ -10,7 +10,7 @@ h1, h2, p , div{
 }
 
 #logo {
-text-align: center;
+    text-align: center;
 }
 
 #logo > img{
