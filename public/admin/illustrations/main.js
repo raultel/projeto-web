@@ -1,19 +1,19 @@
 import { apiGet, apiDelete } from "../../shared/admin/api.js";
 import { buildAdminCard, attachAdminActions, setupAdminForm, openEditForm } from "../../shared/admin/ui.js";
 
-async function loadReleases() {
-    const releases = await apiGet("releases");
-    const container = document.getElementById("releases-container");
+async function loadIllustrations() {
+    const illustrations = await apiGet("illustrations");
+    const container = document.getElementById("illustrations-container");
     container.innerHTML = "";
 
-    releases.forEach(r => {
-        container.appendChild(buildAdminCard("releases", r));
+    illustrations.forEach(r => {
+        container.appendChild(buildAdminCard("illustrations", r));
     });
 
     attachAdminActions(container, {
         onDelete: async (model, id) => {
             await apiDelete(model, id);
-            loadReleases();
+            loadIllustrations();
         },
         onEdit: async (model, id) => {
             console.log("Edit", model, id);
@@ -22,5 +22,5 @@ async function loadReleases() {
     });
 }
 
-loadReleases();
-setupAdminForm("releases", loadReleases);
+loadIllustrations();
+setupAdminForm("illustrations", loadIllustrations);

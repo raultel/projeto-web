@@ -23,10 +23,9 @@ function findById(request, response) {
 
 function create(request, response) {
     model.create({
-        name: request.body.name,
+        title: request.body.title,
         description: request.body.description,
-        price: request.body.price,
-        image_url: request.body.image_url
+        path: request.body.path,
     })
     .then(function (res) {
         response.status(201).json(res)
@@ -41,30 +40,34 @@ function deleteByPk(request, response) {
     .destroy({ where: { id: request.params.id } })
     .then(function (count) {
         if (count === 0) {
-            response.json({ message: "Not found" }).status(404)
+            return response.status(404).json({ message: "Not found" });
         }
 
-        response.status(200).json({ message: "Deleted" })
+        return response.status(200).json({ message: "Deleted" });
     })
     .catch(function (err) {
-        response.status(500).json(err)
-    })
+        return response.status(500).json(err);
+    });
 }
 
-async function update(request, response) {
+export async function update(request, response) {
     try {
-        const id = request.params.id
+        const id = request.params.id;
 
-        const potion = await model.findByPk(id)
-        if (!potion) {
-            return response.status(404).json({ message: "Not found" })
+        const instance = await model.findByPk(id);
+        if (!instance) {
+            return response.status(404).json({ message: "Not found" });
         }
 
-        await potion.update(request.body)
+        // Use request.body instead of req.body
+        await instance.update(request.body);
 
-        response.status(200).json({ message: "Updated", potion })
+        return response.status(200).json({
+            message: "Updated",
+            data: instance
+        });
     } catch (err) {
-        response.status(500).json(err)
+        return response.status(500).json(err);
     }
 }
 

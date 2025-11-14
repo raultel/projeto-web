@@ -40,30 +40,35 @@ function deleteByPk(request, response) {
     .destroy({ where: { id: request.params.id } })
     .then(function (count) {
         if (count === 0) {
-            response.json({ message: "Not found" }).status(404)
+            return response.status(404).json({ message: "Not found" });
         }
 
-        response.status(200).json({ message: "Deleted" })
+        return response.status(200).json({ message: "Deleted" });
     })
     .catch(function (err) {
-        response.status(500).json(err)
-    })
+        return response.status(500).json(err);
+    });
 }
 
-async function update(request, response) {
-    try {
-        const id = request.params.id
 
-        const potion = await model.findByPk(id)
-        if (!potion) {
-            return response.status(404).json({ message: "Not found" })
+export async function update(request, response) {
+    try {
+        console.log(request.body, "update")
+        const id = request.params.id;
+
+        const instance = await model.findByPk(id);
+        if (!instance) {
+            return response.status(404).json({ message: "Not found" });
         }
 
-        await potion.update(request.body)
+        await instance.update(request.body);
 
-        response.status(200).json({ message: "Updated", potion })
+        return response.status(200).json({
+            message: "Updated",
+            data: instance
+        });
     } catch (err) {
-        response.status(500).json(err)
+        return response.status(500).json(err);
     }
 }
 

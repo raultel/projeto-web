@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lançamentos</title>
+  <title>Ilustrações</title>
 </head>
 <body>
-    <h2> Lançamentos </h2>
-    <div id="releases-container"> </div>
+    <h2> Ilustrações </h2>
+    <div id="illustrations-container"> </div>
 
     <div id="form-div" style="display: none">
       <form id="admin-form" enctype="multipart/form-data">
@@ -19,16 +19,15 @@
         <label>Descrição:</label>
         <input type="text" name="description">
 
-        <label>Ano de lançamento:</label>
-        <input type="number" name="year" required>
+        <label>Caminho do arquivo:</label>
+        <input type="text" name="path" required>
 
         <button type="submit">Confirma</button>
         <p id="response"></p>
       </form>
     </div>
 
-    <button id="btn-add"> Adicionar Lançamento </button>
+    <button id="btn-add">Adicionar Ilustração</button>
 
     <script type="module" src="main.js"></script>
-
 </body>
