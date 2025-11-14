@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançamentos</title>
+</head>
+<body>
+    <h2> Lançamentos </h2>
+    <div id="releases-container"> </div>
+
+    <div id="form-div" style="display: none;">
+      <form id="releases-form" enctype="multipart/form-data">
+        <button type="button" id="close-form">X</button>
+
+        <label>Título:</label>
+        <input type="text" name="title" required>
+
+        <label>Descrição:</label>
+        <input type="text" name="description">
+
+        <label>Ano de lançamento:</label>
+        <input type="number" name="year" required>
+
+        <button type="submit">Confirma</button>
+        <p id="response"></p>
+      </form>
+    </div>
+
+    <button id="add-release"> Adicionar Lançamento </button>
+
+    <script type="module" src="main.js"></script>
+
+</body>
