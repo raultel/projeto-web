@@ -1,10 +1,30 @@
-import { renderReleases } from "./ui.js";
+import { apiGet, apiDelete } from "../shared/api.js";
+import { buildCard, attachActions, setupForm, openEditForm } from "../shared/ui.js";
 
-const res = await fetch("http://localhost:3000/api/releases");
-console.log("Fetched response:", res);
+async function loadIllustrations() {
+    const releases = await apiGet("releases");
 
-const data = await res.json();
+    const container = document.getElementById("releases-container");
+    container.innerHTML = "";
 
-console.log("Fetched releases:", data);
+    for (const r of releases) {
+        const card = await buildCard("releases", r);
+        container.appendChild(card);
+    }
 
-renderReleases(data);
+    attachActions(container, {
+        onDelete: async (model, id) => {
+            await apiDelete(model, id);
+            loadIllustrations(); // reload after deletion
+        },
+        onEdit: async (model, id) => {
+            console.log("Edit", model, id);
+            openEditForm(model, id);
+        }
+    });
+}
+
+
+
+loadIllustrations();
+setupForm("releases", loadIllustrations);

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Illustration</title>
+    <style>
+        img {
+            max-width: 200px;
+            max-height: 200px;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Illustration</h1>
+    <form
+        action="http://localhost:3000/api/illustrations"
+        method="POST"
+        enctype="multipart/form-data">
+
+        <label>
+            Title:
+            <input type="text" name="title" required>
+        </label>
+        <br><br>
+
+        <label>
+            Description:
+            <input type="text" name="description">
+        </label>
+        <br><br>
+
+        <label>
+            File:
+            <input type="file" name="path" id="fileInput">
+        </label>
+        <br>
+        <img id="preview" src="#" alt="Preview" style="display:none;">
+        <br>
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = 'block';
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

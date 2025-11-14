@@ -3,12 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lançamentos</title>
+  <title>Ilustrações</title>
 </head>
 <body>
     <h2> Ilustrações </h2>
     <div id="illustrations-container"> </div>
 
-    <script type="module" src="main.js"></script>
+    <div id="form-div" style="display: none">
+      <form id="form" enctype="multipart/form-data">
+        <button type="button" id="close-form">X</button>
+        <input type="text" name="title" required>
+        <input type="text" name="description">
 
+        <!-- Preview -->
+        <div id="image-preview-container" style="display:none;">
+            <img id="preview-path" src="" alt="Current image" style="max-width:200px">
+        </div>
+
+        <!-- File input -->
+        <input type="file" name="path">
+
+        <button type="submit">Save</button>
+    </form>
+
+    </div>
+
+    <button id="btn-add" style="display: none">Adicionar Ilustração</button>
+
+    <script type="module" src="main.js"></script>
 </body>

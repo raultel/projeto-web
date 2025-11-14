@@ -9,6 +9,26 @@
     <h2> Lançamentos </h2>
     <div id="releases-container"> </div>
 
+    <div id="form-div" style="display: none">
+      <form id="form" enctype="multipart/form-data">
+        <button id="close-form" type="button">X</button>
+
+        <label>Título:</label>
+        <input type="text" name="title" required>
+
+        <label>Descrição:</label>
+        <input type="text" name="description">
+
+        <label>Ano de lançamento:</label>
+        <input type="number" name="year" required>
+
+        <button type="submit">Confirma</button>
+        <p id="response"></p>
+      </form>
+    </div>
+
+    <button id="btn-add" style="display: none"> Adicionar Lançamento </button>
+
     <script type="module" src="main.js"></script>
 
 </body>
