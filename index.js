@@ -1,18 +1,14 @@
 import express from "express";
-import sequelize from "./dbconfig.js";
-import routes from "./routes/api.routes.js";
+import router from "./routes/api.routes.js"
+import sequelize from "./dbconfig.js"
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use("/api", router);
 
-// Routes
-app.use("/api", routes);
-
-// Start server after syncing database
 async function startServer() {
     try {
         await sequelize.sync();

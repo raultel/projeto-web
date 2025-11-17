@@ -1,3 +1,9 @@
+/*
+ * NOTA: código foi copiado do github da professora Bruna (com pequenas alterações):
+ * https://github.com/brunaru/AulaBackEnd-2025/blob/main/media/media.uploader.js
+ */
+
+
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 import User from "../models/user.model.js"
@@ -7,19 +13,17 @@ dotenv.config()
 const secret = process.env["AUTH_SECRET"]
 
 async function register(request, response) {
-    // valores vazios
     if (!request.body.password || !request.body.email) {
         response.status(400).send("Informe usuário e senha!")
     }
-    // já existe cadastro no bd
     let user = await User.findOne({ where: { email: request.body.email } })
     if (user) {
         response.status(400).send("Usuário já cadastrado!")
     }
-    // hashing da senha
+    // hashing
     const salt = bcrypt.genSaltSync()
     const hashedPassword = bcrypt.hashSync(request.body.password, salt)
-    // cadastra usuario
+
     User.create({
         email: request.body.email,
         password: hashedPassword,
@@ -39,7 +43,6 @@ async function register(request, response) {
 }
 
 function getToken(uid, uemail) {
-    console.log(secret)
     const meuToken = jwt.sign(
         {
             sub: uid,

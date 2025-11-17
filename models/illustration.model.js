@@ -15,14 +15,18 @@ Illustration.init({
 
     },
     description: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.TEXT,
+        allowNull: false
 
     },
-    path: {
-        type: DataTypes.STRING,
+    date: {
+        type: DataTypes.DATE,
         allowNull: true
     },
+    img_path: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, { sequelize: sequelize, timestamps: false })
 
 export default Illustration

@@ -1,4 +1,5 @@
 const form = document.getElementById("login-form");
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -12,22 +13,17 @@ form.addEventListener("submit", async (e) => {
             body: JSON.stringify(data)
         });
 
-        const result = await res.json();  // ✅ read body once
+        const result = await res.json();
 
         if (!res.ok) {
-            // responseText.textContent = "Erro: " + (result.message || "Login failed");
+            document.getElementById("login-response").textContent = "usuário ou senha incorretos";
             return;
         }
 
-        // Save token for future requests
         localStorage.setItem("jwtToken", result.token);
-        // responseText.textContent = "Login successful!";
-
-        // Redirect to admin page
-        window.location.href = "/admin/music/index.html";
+        window.location.replace("http://localhost:3000/");
 
     } catch (err) {
         console.error(err);
-        // responseText.textContent = "Erro ao conectar ao servidor";
     }
 });

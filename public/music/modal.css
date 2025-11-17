@@ -1,0 +1,28 @@
+.modal button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    margin: 10% auto; padding: 20px;
+    width: 300px;
+}
+
+.modal-content div {
+    display: flex;
+    justify-content: space-between; /* span left, input right */
+}
+
+img {
+    max-width: 300px;
+}

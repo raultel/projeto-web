@@ -15,14 +15,22 @@ Release.init({
 
     },
     description: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.TEXT,
+        allowNull: false
 
     },
-    year: {
-        type: DataTypes.INTEGER,
+    date: {
+        type: DataTypes.DATE,
         allowNull: false
     },
+    duration: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
+    img_path: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, { sequelize: sequelize, timestamps: false })
 
 export default Release
