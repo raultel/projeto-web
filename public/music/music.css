@@ -1,0 +1,25 @@
+#music-collection {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    width: 70%;
+    display: flex;
+    padding: 20px;
+}
+
+.album_cover {
+    padding-right: 20px;
+    width: 47%;
+}
+
+.album_cover > img {
+    width:100%;
+}
+
+.album_info {
+    width: 47%;
+}

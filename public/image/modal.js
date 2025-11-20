@@ -1,9 +1,9 @@
 const modal = document.getElementById("register-modal");
 const openBtn = document.getElementById("open-modal-btn");
 const closeBtn = modal.querySelector(".close");
-const form = document.getElementById("music-form");
+const form = document.getElementById("image-form");
 
-openBtn.onclick = () => {modal.style.display = "flex";modal.dataset.value=-1;};
+openBtn.onclick = () => {modal.style.display = "block";modal.dataset.value=-1;};
 closeBtn.onclick = () => {modal.style.display = "none";modal.dataset.value=-1;};
 window.onclick = e => { if(e.target===modal) modal.style.display="none"; }
 
