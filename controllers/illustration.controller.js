@@ -29,5 +29,17 @@ export function illustration_controller(model) {
                 response.status(500).json(err);
             }
         },
+
+        async update(request, response) {
+            try {
+                if (request.file && request.file.location) {
+                    request.body.img_path = prefix+getFilenameFromUrl(request.file.location);
+                }
+                return base.update(request, response);
+            } catch (err) {
+                console.log(err)
+                response.status(500).json(err);
+            }
+        },
     }
 }

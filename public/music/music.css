@@ -1,25 +1,42 @@
 #music-collection {
-    padding-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .card {
-    width: 70%;
+    margin-top: 10px;
+
+    font-family: "Alexandria", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 250;
+    font-style: normal;
+    max-width: 800px;
+    max-height: 400px;
     display: flex;
-    padding: 20px;
+
+
+    text-align: justify;
+    text-justify: auto;
+}
+
+.card h1, h2 {
+    margin-top: 0px;
+    margin-bottom: 0;
 }
 
 .album_cover {
-    padding-right: 20px;
-    width: 47%;
+    width: 50%;
+    padding-right: 8px;
 }
 
-.album_cover > img {
-    width:100%;
+.album_cover img {
+    object-fit: scale-down;
+    width: 100%;
 }
 
 .album_info {
-    width: 47%;
+    padding-left: 8px;
+    width: 50%;
+    overflow-y: auto;
 }

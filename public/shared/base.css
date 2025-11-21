@@ -9,11 +9,10 @@ h1, h2, p , div{
     color: white;
 }
 
+
 #logo {
     text-align: center;
 }
-
-
 #navbar {
     max-height: 50px;
     margin: 0 auto;
@@ -21,10 +20,41 @@ h1, h2, p , div{
     justify-content: center;
     gap: 20px;
 }
-
-
 #navbar > a > img {
     max-height: 50px;
     width: auto !important;
 }
 
+a { text-decoration: none; }
+
+
+.admin-buttons{
+    margin-top: 10px;
+    margin-left: 0px;
+}
+
+.edit_btn {
+    background: none;
+    border: 0;
+}
+
+.delete_btn {
+    background: none;
+    border: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.button-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.open-btn {
+    margin-top: 20px;
+    background: none;
+    border: 0;
+}

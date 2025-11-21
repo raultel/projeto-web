@@ -14,17 +14,36 @@ Release.init({
         allowNull: false
 
     },
+    subtitle: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    youtube: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    soundcloud: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    spotify: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    bandcamp: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     description: {
         type: DataTypes.TEXT,
         allowNull: false
-
     },
     date: {
         type: DataTypes.DATE,
         allowNull: false
     },
     duration: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         allowNull: false
     },
     img_path: {

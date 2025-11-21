@@ -36,4 +36,4 @@ async function list_items() {
 await setup_form(form, modal, model_name, list_items);
 await list_items();
 if (token)
-    document.getElementById("open-modal-btn").style = "display: block"
+    document.getElementsByClassName("open-btn")[0].style = "display: block"
