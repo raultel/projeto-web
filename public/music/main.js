@@ -2,7 +2,7 @@ import { api_get, api_create, api_delete, api_get_by_id, api_update } from "/sha
 import { setup_form, setup_admin_view} from "/shared/crud.js"
 
 const token = localStorage.getItem("jwtToken");
-const form = document.getElementById("music-form");
+const form = document.getElementById("model-form");
 const modal = document.getElementById("register-modal");
 const model_name = "releases"
 

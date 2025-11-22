@@ -16,7 +16,7 @@ Illustration.init({
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
 
     },
     date: {

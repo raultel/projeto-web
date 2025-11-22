@@ -20,7 +20,6 @@ export function edit_action(item, modal, form) {
         } else {
             input.value = item[key];
         }
-
     }
 }
 

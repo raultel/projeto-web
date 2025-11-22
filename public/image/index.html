@@ -4,23 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lançamentos</title>
+
   <link rel="stylesheet" href="/shared/base.css">
-  <link rel="stylesheet" href="./modal.css">
+  <link rel="stylesheet" href="/shared/modal/modal.css">
+  <link rel="stylesheet" href="./image.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
     <script type="module" src="/shared/header.js"></script>
 
-    <button class="open-btn" style="display: none">+</button>
+    <div class="button-center">
+      <button class="open-btn" style="display: none">
+        <img src="/assets/buttons/add_btn.svg" alt="plus symbol inside a circle">
+      </button>
+    </div>
 
     <div id="register-modal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <form id="image-form" enctype="multipart/form-data">
+        <form id="model-form" enctype="multipart/form-data">
           <div><span>Título: </span> <input type="text" name="title" required></div>
-          <div><span>Descrição: </span><input type="text" name="description" required></div>
-          <div><span>Upload: </span><input type="date" name="date" required></div>
-          <div><span>Capa: </span><input type="file" name="file" required></div>
+          <div><span>Descrição: </span><input type="text" name="description"></div>
+          <div><span>Upload: </span><input type="date" name="date"></div>
+          <div>Imagem: <input type="file" name="file"></div>
           <button type="submit">Confirma</button>
         </form>
       </div>
@@ -28,7 +34,8 @@
 
     <div id="image-collection"></div>
 
-   <script type="module" src="./modal.js"></script>
+   <script type="module" src="/shared/modal/modal.js"></script>
+   <script type="module" src="./image_modal.js"></script>
    <script type="module" src="./main.js"></script>
 
 </body>
