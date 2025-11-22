@@ -82,9 +82,6 @@ function build_card(item) {
         buttons = setup_admin_view(item, modal, form, model_name, list_items);
     }
 
-    console.log(item.youtube)
-    console.log(item.date)
-
     div.insertAdjacentHTML("afterbegin", `
         <div class="album_cover">
         <img src="${item.img_path}" alt="">

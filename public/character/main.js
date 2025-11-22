@@ -17,7 +17,6 @@ function build_card(item) {
 
     if (token) {
         buttons = setup_admin_view(item, modal, form, model_name, list_items);
-        console.log(buttons)
     }
 
     div.insertAdjacentHTML("afterbegin", `

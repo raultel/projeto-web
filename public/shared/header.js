@@ -8,14 +8,10 @@ export async function load_header() {
     try {
         const response = await fetch('/shared/header.html');
         const data = await response.text();
-        console.log(data)
         document.getElementById('header-placeholder').innerHTML = data;
 
-
-        const pageName = getPageName(window.location.href);
-        //
-        console.log(document.getElementById(pageName+"-nav-img"));
-        document.getElementById(pageName+"-nav-img").setAttribute("fill", "red")
+        // const pageName = getPageName(window.location.href);
+        // document.getElementById(pageName+"-nav-img").setAttribute("fill", "red")
 
     } catch (error) {
         console.error('Error loading header:', error);

@@ -48,9 +48,8 @@ function build_card(item) {
 
         /* Esconde o modal da imagem para mostrar o modal do form */
         for (let btn of btns_div.children) {
-            console.log(item)
             btn.addEventListener("click", function(e) {
-                console.log(btn.parentElement.parentElement)
+
                 btn.parentElement.parentElement.parentElement.style= "display: none";
             });
         }

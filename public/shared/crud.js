@@ -1,7 +1,6 @@
 import { api_get, api_create, api_delete, api_get_by_id, api_update } from "/shared/api.js"
 
 function toDateOnly(datetimeString) {
-    // Extract only YYYY-MM-DD (works even with ancient years)
     const match = datetimeString.match(/^(\d{4})-(\d{2})-(\d{2})/);
     if (!match) return ""; // fallback
     return `${match[1]}-${match[2]}-${match[3]}`;
@@ -31,29 +30,22 @@ export async function delete_item(model_name, id, build_card) {
     }
 
     document.querySelectorAll(".card").forEach(function(card) {
-        console.log("CARD: ", card);
         if (Number(card.dataset.value) === id) {
-            console.log("FOUND ID:");
-            console.log(card);
             card.remove();
         }
     });
 }
 
 async function append_new_item(model_name, item, build_card) {
-    console.log(model_name, item);
     const div = build_card(item);
     document.getElementById(model_name + "-collection").appendChild(div);
 }
 
 async function update_item_div(item, id, build_card) {
     const new_card = build_card(item.data);
-    console.log("ITEM: ", item);
-    console.log("NCARD: ", new_card);
 
     document.querySelectorAll(".card").forEach(function(card) {
         if (card.dataset.value === id) {
-            console.log("REPLACE:", card, new_card);
             card.replaceWith(new_card);
         }
     });
@@ -68,12 +60,10 @@ export async function setup_form(form, modal, model_name, build_card)
 
         try {
             if (Number(modal.dataset.value) === -1) {
-                console.log(formData)
                 let item = await api_create(model_name, formData);
                 append_new_item(model_name, item, build_card);
             }
             else {
-                console.log(modal.dataset.value, "AQUI");
                 let item = await api_update(model_name, modal.dataset.value, formData);
                 update_item_div(item, modal.dataset.value, build_card)
             }
