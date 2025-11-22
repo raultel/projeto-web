@@ -20,9 +20,12 @@ h1, h2, p , div{
     justify-content: center;
     gap: 20px;
 }
+
 #navbar > a > img {
-    max-height: 50px;
-    width: auto !important;
+    width: 125px;
+    height: 50px;
+/*      max-height: 50px; */ */
+/*     width: auto !important; */
 }
 
 a { text-decoration: none; }

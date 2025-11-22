@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lançamentos</title>
-
   <link rel="stylesheet" href="/shared/base.css">
   <link rel="stylesheet" href="/shared/modal/modal.css">
-  <link rel="stylesheet" href="./image.css">
+  <link rel="stylesheet" href="./character.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -21,21 +24,24 @@
 
     <div id="register-modal" class="modal">
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close">&times; </span>
         <form id="model-form" enctype="multipart/form-data">
-          <div><span>Título: </span> <input type="text" name="title" required></div>
-          <div><span>Descrição: </span><input type="text" name="description"></div>
-          <div><span>Upload: </span><input type="date" name="date"></div>
+          <div>Nome: <input type="text" name="name" required></div>
+          <div>Outros nomes: <input type="text" name="aliases"></div>
+          <div>Idade: <input type="number" name="age" ></div>
+          <div>Espécie: <input type="text" name="species" ></div>
+          <div>Gênero: <input type="text" name="gender" ></div>
+          <div>Origem: <input type="text" name="origin" ></div>
+          <div>Descrição: <textarea name="description" rows="3" cols="20"></textarea></div>
           <div>Imagem: <input type="file" name="file"></div>
           <button type="submit">Confirma</button>
         </form>
       </div>
     </div>
 
-    <div id="images-collection"></div>
+    <div id="characters-collection"></div>
 
    <script type="module" src="/shared/modal/modal.js"></script>
-   <script type="module" src="./image_modal.js"></script>
    <script type="module" src="./main.js"></script>
 
 </body>

@@ -5,7 +5,7 @@ const token = localStorage.getItem("jwtToken");
 const form = document.getElementById("model-form");
 const modal = document.getElementById("register-modal");
 const model_name = "images";
-const container = document.getElementById("image-collection");
+const container = document.getElementById("images-collection");
 
 function show_img_modal(id, modal) {
     modal.style = "display: flex";

@@ -1,3 +1,17 @@
+function convert_numerical_fields(req, model) {
+    const data = { ...req.body };
+
+    for (const [key, attribute] of Object.entries(model.rawAttributes)) {
+        if (
+            ["INTEGER", "BIGINT", "FLOAT", "DOUBLE", "DECIMAL"].includes(attribute.type.key) &&
+            data[key] !== undefined
+        ) {
+            data[key] = Number(data[key]);
+        }
+    }
+    return data;
+}
+
 export function crud_controller(model) {
     return {
         async findAll(request, response) {
@@ -20,7 +34,8 @@ export function crud_controller(model) {
 
         async create(request, response) {
             try {
-                const result = await model.create(request.body);
+                const data = convert_numerical_fields(request, model);
+                const result = await model.create(data);
                 response.status(201).json(result);
             } catch(err)  {
                 console.log(err, "base")
@@ -43,13 +58,14 @@ export function crud_controller(model) {
 
         async update(request, response) {
             try {
+                const data = convert_numerical_fields(request, model);
                 const id = request.params.id;
                 const instance = await model.findByPk(id);
 
                 if (!instance) {
                     response.status(404).json({ message: "Not found" });
                 } else {
-                    await instance.update(request.body);
+                    await instance.update(data);
 
                     response.status(200).json({
                         message: "Updated",

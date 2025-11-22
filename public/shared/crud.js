@@ -23,16 +23,43 @@ export function edit_action(item, modal, form) {
     }
 }
 
-export async function delete_item(model_name, id, list_items) {
+export async function delete_item(model_name, id, build_card) {
     try {
         await api_delete(model_name, id);
     } catch (err) {
         console.error(err);
     }
-    await list_items()
+
+    document.querySelectorAll(".card").forEach(function(card) {
+        console.log("CARD: ", card);
+        if (Number(card.dataset.value) === id) {
+            console.log("FOUND ID:");
+            console.log(card);
+            card.remove();
+        }
+    });
 }
 
-export async function setup_form(form, modal, model_name, list_items)
+async function append_new_item(model_name, item, build_card) {
+    console.log(model_name, item);
+    const div = build_card(item);
+    document.getElementById(model_name + "-collection").appendChild(div);
+}
+
+async function update_item_div(item, id, build_card) {
+    const new_card = build_card(item.data);
+    console.log("ITEM: ", item);
+    console.log("NCARD: ", new_card);
+
+    document.querySelectorAll(".card").forEach(function(card) {
+        if (card.dataset.value === id) {
+            console.log("REPLACE:", card, new_card);
+            card.replaceWith(new_card);
+        }
+    });
+}
+
+export async function setup_form(form, modal, model_name, build_card)
 {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -40,18 +67,23 @@ export async function setup_form(form, modal, model_name, list_items)
         const formData = new FormData(form);
 
         try {
-            if (Number(modal.dataset.value) === -1)
-                await api_create(model_name, formData);
-            else
-                await api_update(model_name, modal.dataset.value, formData);
-            await list_items();
+            if (Number(modal.dataset.value) === -1) {
+                console.log(formData)
+                let item = await api_create(model_name, formData);
+                append_new_item(model_name, item, build_card);
+            }
+            else {
+                console.log(modal.dataset.value, "AQUI");
+                let item = await api_update(model_name, modal.dataset.value, formData);
+                update_item_div(item, modal.dataset.value, build_card)
+            }
         } catch (err) {
             console.error(err);
         }
     });
 }
 
-export function setup_admin_view(item, modal, form, model_name, list_items) {
+export function setup_admin_view(item, modal, form, model_name, build_card) {
     const div = document.createElement("div");
     div.classList.add("admin-buttons");
 
@@ -66,7 +98,7 @@ export function setup_admin_view(item, modal, form, model_name, list_items) {
     editBtn.value   = item.id;
 
     editBtn.addEventListener("click", () => edit_action(item, modal, form));
-    deleteBtn.addEventListener("click", () => delete_item(model_name, item.id, list_items));
+    deleteBtn.addEventListener("click", () => delete_item(model_name, item.id, build_card));
 
     return div;
 }
