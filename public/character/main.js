@@ -16,7 +16,7 @@ function build_card(item) {
     div.classList.add("card");
 
     if (token) {
-        buttons = setup_admin_view(item, modal, form, model_name, list_items);
+        buttons = setup_admin_view(item, modal, form, model_name, build_card);
     }
 
     div.insertAdjacentHTML("afterbegin", `

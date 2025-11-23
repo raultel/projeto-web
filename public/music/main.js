@@ -104,6 +104,9 @@ function build_card(item) {
         create_links(item.youtube, item.bandcamp, item.soundcloud, item.spotify)
     );
 
+    if (token)
+        div.dataset.value = item.id;
+
     return div;
 }
 
@@ -121,6 +124,6 @@ async function list_items() {
 
 await list_items();
 if (token) {
-    await setup_form(form, modal, model_name, list_items);
+    await setup_form(form, modal, model_name, build_card);
     document.getElementsByClassName("open-btn")[0].style = "display: block"
 }

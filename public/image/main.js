@@ -43,7 +43,7 @@ function build_card(item) {
     });
 
     if (token) {
-        let btns_div = setup_admin_view(item, modal, form, "images", list_items);
+            let btns_div = setup_admin_view(item, modal, form, "images", build_card);
         img_modal_content.append(btns_div);
 
         /* Esconde o modal da imagem para mostrar o modal do form */
@@ -56,6 +56,8 @@ function build_card(item) {
     }
 
     card.appendChild(img_modal);
+    if (token)
+        card.dataset.value = item.id;
 
     return card;
 }
@@ -72,6 +74,6 @@ async function list_items() {
 
 await list_items();
 if (token) {
-    await setup_form(form, modal, model_name, list_items);
+    setup_form(form, modal, model_name, build_card);
     document.getElementsByClassName("open-btn")[0].style = "display: block";
 }

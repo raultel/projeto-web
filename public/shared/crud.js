@@ -22,7 +22,7 @@ export function edit_action(item, modal, form) {
     }
 }
 
-export async function delete_item(model_name, id, build_card) {
+export async function delete_item(model_name, id) {
     try {
         await api_delete(model_name, id);
     } catch (err) {
@@ -30,18 +30,18 @@ export async function delete_item(model_name, id, build_card) {
     }
 
     document.querySelectorAll(".card").forEach(function(card) {
-        if (Number(card.dataset.value) === id) {
+        if (Number(card.dataset.value) === Number(id)) {
             card.remove();
         }
     });
 }
 
-async function append_new_item(model_name, item, build_card) {
+function append_new_item(model_name, item, build_card) {
     const div = build_card(item);
     document.getElementById(model_name + "-collection").appendChild(div);
 }
 
-async function update_item_div(item, id, build_card) {
+function update_item_div(item, id, build_card) {
     const new_card = build_card(item.data);
 
     document.querySelectorAll(".card").forEach(function(card) {
@@ -51,7 +51,7 @@ async function update_item_div(item, id, build_card) {
     });
 }
 
-export async function setup_form(form, modal, model_name, build_card)
+export function setup_form(form, modal, model_name, build_card)
 {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -88,7 +88,7 @@ export function setup_admin_view(item, modal, form, model_name, build_card) {
     editBtn.value   = item.id;
 
     editBtn.addEventListener("click", () => edit_action(item, modal, form));
-    deleteBtn.addEventListener("click", () => delete_item(model_name, item.id, build_card));
+    deleteBtn.addEventListener("click", () => delete_item(model_name, item.id));
 
     return div;
 }
