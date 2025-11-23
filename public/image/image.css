@@ -1,10 +1,17 @@
 
 #images-collection {
-width: 70%;
-margin: auto;
+    width: 70%;
+    margin: auto;
 
-column-count: 2;
-column-gap: 12px;
+    column-count: 2;
+    column-gap: 12px;
+}
+
+@media (max-width:600px) {
+    #images-collection {
+        column-count: 1;
+        column-gap: 0;
+    }
 }
 
 #images-collection .card {

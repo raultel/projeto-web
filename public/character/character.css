@@ -45,3 +45,29 @@
     width: 50%;
     overflow-y: auto;
 }
+
+@media (min-width:600px) {
+    .album_cover img {
+        object-fit: scale-down;
+        width: 100%;
+    }
+
+    .album_info {
+        padding-left: 8px;
+        width: 50%;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width:600px) {
+    .card {
+        flex-direction: column;
+        align-items: center;
+    }
+    .album_cover {
+        width: 80%;
+    }
+    .album_cover img {
+        width: 90%;
+    }
+}
