@@ -24,26 +24,65 @@
 
     <div id="register-modal" class="modal">
       <div class="modal-content">
-        <span class="close">&times; </span>
+        <span class="close">&times;</span>
         <form id="model-form" enctype="multipart/form-data">
-          <div>Título: <input type="text" name="title" required></div>
-          <div>Upload: <input type="date" name="date" required></div>
-          <div>
-            Duração:
+          
+          <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Upload:</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="duration">Duração:</label>
             <input
               type="text"
+              id="duration"
               name="duration"
               placeholder="HH:MM:SS"
               pattern="^(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$"
               required>
-            </div>
-          <div>Youtube: <input type="text" name="youtube" ></div>
-          <div>Bandcamp: <input type="text" name="bandcamp" ></div>
-          <div>Soundcloud: <input type="text" name="soundcloud" ></div>
-          <div>Spotify: <input type="text" name="spotify" ></div>
-          <div>Subtítulo: <textarea name="subtitle" rows="3" cols="20"></textarea></div>
-          <div>Descrição: <textarea name="description" rows="3" cols="20" required></textarea></div>
-          <div>Capa: <input type="file" name="file"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="youtube">Youtube:</label>
+            <input type="text" id="youtube" name="youtube">
+          </div>
+
+          <div class="form-group">
+            <label for="bandcamp">Bandcamp:</label>
+            <input type="text" id="bandcamp" name="bandcamp">
+          </div>
+
+          <div class="form-group">
+            <label for="soundcloud">Soundcloud:</label>
+            <input type="text" id="soundcloud" name="soundcloud">
+          </div>
+
+          <div class="form-group">
+            <label for="spotify">Spotify:</label>
+            <input type="text" id="spotify" name="spotify">
+          </div>
+
+          <div class="form-group full">
+            <label for="subtitle">Subtítulo:</label>
+            <textarea id="subtitle" name="subtitle" rows="3"></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="description">Descrição:</label>
+            <textarea id="description" name="description" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="file">Capa:</label>
+            <input type="file" id="file" name="file">
+          </div>
+
           <button type="submit">Confirma</button>
         </form>
       </div>
@@ -51,7 +90,8 @@
 
     <div id="musics-collection"></div>
 
-   <script type="module" src="/shared/modal/modal.js"></script>
-   <script type="module" src="./main.js"></script>
+    <script type="module" src="/shared/modal/modal.js"></script>
+    <script type="module" src="./main.js"></script>
 
 </body>
+</html>

@@ -24,16 +24,49 @@
 
     <div id="register-modal" class="modal">
       <div class="modal-content">
-        <span class="close">&times; </span>
+        <span class="close">&times;</span>
         <form id="model-form" enctype="multipart/form-data">
-          <div>Nome: <input type="text" name="name" required></div>
-          <div>Outros nomes: <input type="text" name="aliases"></div>
-          <div>Idade: <input type="number" name="age" ></div>
-          <div>Espécie: <input type="text" name="species" ></div>
-          <div>Gênero: <input type="text" name="gender" ></div>
-          <div>Origem: <input type="text" name="origin" ></div>
-          <div>Descrição: <textarea name="description" rows="3" cols="20"></textarea></div>
-          <div>Imagem: <input type="file" name="file"></div>
+
+          <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="aliases">Outros nomes:</label>
+            <input type="text" id="aliases" name="aliases">
+          </div>
+
+          <div class="form-group">
+            <label for="age">Idade:</label>
+            <input type="number" id="age" name="age">
+          </div>
+
+          <div class="form-group">
+            <label for="species">Espécie:</label>
+            <input type="text" id="species" name="species">
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gênero:</label>
+            <input type="text" id="gender" name="gender">
+          </div>
+
+          <div class="form-group">
+            <label for="origin">Origem:</label>
+            <input type="text" id="origin" name="origin">
+          </div>
+
+          <div class="form-group full">
+            <label for="description">Descrição:</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="file">Imagem:</label>
+            <input type="file" id="file" name="file">
+          </div>
+
           <button type="submit">Confirma</button>
         </form>
       </div>
@@ -41,7 +74,7 @@
 
     <div id="characters-collection"></div>
 
-   <script type="module" src="/shared/modal/modal.js"></script>
-   <script type="module" src="./main.js"></script>
-
+    <script type="module" src="/shared/modal/modal.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
+</html>
