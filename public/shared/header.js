@@ -10,8 +10,8 @@ export async function load_header() {
         const data = await response.text();
         document.getElementById('header-placeholder').innerHTML = data;
 
-        // const pageName = getPageName(window.location.href);
-        // document.getElementById(pageName+"-nav-img").setAttribute("fill", "red")
+        const page_name = getPageName(window.location.href);
+        document.getElementById(page_name+"-nav-img").src = "/assets/navbar/" + page_name + "_color.svg";
 
     } catch (error) {
         console.error('Error loading header:', error);

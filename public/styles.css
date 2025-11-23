@@ -4,28 +4,48 @@ html, body {
     background-color: black;
 }
 
+
+
 #logo {
+    padding: 20px;
     text-align: center;
 }
 
 #logo > img{
-    width: 300px !important;
+    width: 200px;
 }
 
 #navbar {
-    margin: 0 auto;
+    max-height: 66px;
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
+#navbar a img {
+    height: 100%;
+}
+
+.box {
+    max-width: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.box img {
+    width: 100%;
+}
+
 #box1 {
+padding-top: 13px;
 background-color: #EDB651;
 }
 #box2 {
+padding-top: 38px;
 background-color: #8C3AFF;
 }
 #box3 {
+padding-top: 110px;
 background-color: #3AADFF;
 }
 #box4 {
