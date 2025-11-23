@@ -7,7 +7,7 @@ import * as Minio from "minio"
 import dotenv from "dotenv"
 import multer from "multer"
 import multerS3 from "multer-s3"
-import { S3Client } from "@aws-sdk/client-s3"
+import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3"
 import mime from "mime"
 
 dotenv.config()
@@ -53,4 +53,27 @@ function getFileUrl(objectName) {
     return minioClient.presignedUrl('GET', BUCKET_NAME, objectName, 24 * 60 * 60)
 }
 
-export default { uploadFile, getFileUrl }
+function extractKeyFromUrl(url) {
+    return url.split('/').pop();
+}
+
+
+async function deleteFile(fileUrl) {
+    try {
+        const key = extractKeyFromUrl(fileUrl);
+
+        const command = new DeleteObjectCommand({
+            Bucket: BUCKET_NAME,
+            Key: key,
+        });
+
+        await s3.send(command);
+        return true;
+
+    } catch (err) {
+        console.error("MinIO delete error:", err);
+        throw err; // rethrow to be handled by controller
+    }
+}
+
+export default { uploadFile, getFileUrl, deleteFile }

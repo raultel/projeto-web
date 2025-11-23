@@ -34,7 +34,7 @@ router.put("/releases/:id", authController.validateToken, media_uploader.uploadF
 router.get("/characters", character_ctl.findAll);
 router.get("/characters/:id", character_ctl.findById);
 router.post("/characters", authController.validateToken, media_uploader.uploadFile.single('file'), character_ctl.create);
-router.delete("/characters/:id", authController.validateToken, character_ctl    .deleteByPk); // TO-DO: delete the image?
+router.delete("/characters/:id", authController.validateToken, character_ctl.deleteByPk); // TO-DO: delete the image?
 router.put("/characters/:id", authController.validateToken, media_uploader.uploadFile.single('file'), character_ctl.update);
 
 export default router

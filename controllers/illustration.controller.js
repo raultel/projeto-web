@@ -41,5 +41,29 @@ export function illustration_controller(model) {
                 response.status(500).json(err);
             }
         },
+        async deleteByPk(request, response) {
+            try {
+                const id = request.params.id;
+
+                const item = await model.findByPk(id);
+                if (!item) {
+                    return response.status(404).json({ error: "Item not found" });
+                }
+
+                if (item.img_path) {
+                    try {
+                        await media_uploader.deleteFile(item.img_path);
+                    } catch (err) {
+                        console.log(err);
+                        return response.status(500).json({ error: "Failed to delete image from MinIO" });
+                    }
+                }
+                return base.deleteByPk(request, response);
+
+            } catch (err) {
+                console.log(err)
+                response.status(500).json(err);
+            }
+        },
     }
 }
