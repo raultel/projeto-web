@@ -4,23 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h2>Login</h2>
+  <div class="logo-container">
+    <img src="/assets/r4ymix_logo.svg" alt="R4ymix Logo" class="logo">
+  </div>
 
-  <form id="login-form">
-    <label>Username:</label>
-    <input type="text" name="email" required>
-    <br>
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Username</label>
+          <input type="text" id="email" name="email" placeholder="Digite seu usuário" required>
+        </div>
 
-    <label>Password:</label>
-    <input type="password" name="password" required>
-    <br>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+        </div>
 
-    <button type="submit">Login</button>
-  </form>
-
-  <p id="login-response"></p>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+      <p id="login-response" class="response"></p>
+    </div>
+  </div>
 
   <script type="module" src="login.js"></script>
 </body>
