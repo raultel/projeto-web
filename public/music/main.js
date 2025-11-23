@@ -94,7 +94,7 @@ function build_card(item) {
         <br>
         <div class="item-field"><strong>${withBreaks(item.subtitle)}</strong></div>
         <br>
-        <div class="item-field">${item.description}</div>
+        <div class="item-field"><p>${item.description}</p></div>
         </div>
     `);
 

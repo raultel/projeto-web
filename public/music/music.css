@@ -1,4 +1,4 @@
-#musics-collection {
+#releases-collection {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,45 +11,52 @@
     font-optical-sizing: auto;
     font-weight: 250;
     font-style: normal;
-    max-width: 800px;
-    max-height: 400px;
-    display: flex;
-    text-align: justify;
-    text-justify: auto;
 }
 
-.card h1, h2 {
-    margin-top: 0px;
+.card h1, h2, p {
+    word-break: break-word;
+    margin-top: 0;
     margin-bottom: 0;
 }
 
-.album_cover {
-    width: 50%;
-    padding-right: 8px;
-}
 
 @media (min-width:600px) {
+    .card {
+        width: 60vw;
+        max-height: 25vw;
+        display: flex;
+        text-align: justify;
+        text-justify: auto;
+    }
+
+    .album_cover {
+        width: 50%;
+        padding-right: 8px;
+    }
+
     .album_cover img {
-        object-fit: scale-down;
+        width: 100%;
+    }
+
+    .album_info {
+        width: 50%;
+        padding-left: 8px;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width:599px) {
+    .card {
+        width: 90vw;
+    }
+
+    .album_cover img {
         width: 100%;
     }
 
     .album_info {
         padding-left: 8px;
-        width: 50%;
         overflow-y: auto;
     }
 }
 
-@media (max-width:600px) {
-    .card {
-        flex-direction: column;
-        align-items: center;
-    }
-    .album_cover {
-        width: 80%;
-    }
-    .album_cover img {
-        width: 90%;
-    }
-}
