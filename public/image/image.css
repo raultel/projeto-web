@@ -1,5 +1,5 @@
 
-#image-collection {
+#images-collection {
 width: 70%;
 margin: auto;
 
@@ -7,19 +7,19 @@ column-count: 2;
 column-gap: 12px;
 }
 
-#image-collection .card {
+#images-collection .card {
     break-inside: avoid;
     margin-bottom: 12px;
 }
 
-#image-collection img {
+#images-collection img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-#image-collection .card,
-#image-collection .card > button {
+#images-collection .card,
+#images-collection .card > button {
     width: 100%;
     display: block;
 }
