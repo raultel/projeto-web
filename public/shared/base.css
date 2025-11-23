@@ -10,7 +10,7 @@ h1, h2, p , div{
 }
 
 #logo {
-    margin-top: 10px;
+    margin: 15px;
     text-align: center;
 }
 
@@ -24,7 +24,7 @@ a { text-decoration: none; }
     gap: 20px;
 }
 
-@media (max-width:600px) {
+@media (max-width:599px) {
     #navbar {
         flex-direction: column;
         align-items: center;
