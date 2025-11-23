@@ -30,7 +30,7 @@ function build_card(item) {
         <div class="item-field">Espécie: ${item.species}</div>
         <div class="item-field">Gênero: ${item.gender}</div>
         <div class="item-field">Origem: ${item.origin}</div>
-        <div class="item-field">${item.description}</div>
+        <div class="item-field"><p>${item.description}</p></div>
     </div>
     `);
 
