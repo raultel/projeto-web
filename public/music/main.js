@@ -112,12 +112,12 @@ function build_card(item) {
 
 
 async function list_items() {
-    document.getElementById("musics-collection").innerHTML = ""
+    document.getElementById("releases-collection").innerHTML = ""
     const musics = await api_get(model_name);
     if (!Array.isArray(musics)) return;
     for(let music of musics) {
         const div = build_card(music)
-        document.getElementById("musics-collection").appendChild(div);
+        document.getElementById("releases-collection").appendChild(div);
     }
 }
 
