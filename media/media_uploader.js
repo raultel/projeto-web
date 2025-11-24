@@ -59,6 +59,7 @@ function extractKeyFromUrl(url) {
 }
 
 
+/* Deleta um arquivo usando o url permanente do minio */
 async function deleteFile(fileUrl) {
     try {
         const key = extractKeyFromUrl(fileUrl);
@@ -73,7 +74,7 @@ async function deleteFile(fileUrl) {
 
     } catch (err) {
         console.error("MinIO delete error:", err);
-        throw err; // rethrow to be handled by controller
+        throw err;
     }
 }
 
