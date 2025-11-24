@@ -11,7 +11,7 @@ html, body {
     text-align: center;
 }
 
-#logo > img{
+#logo img{
     width: 200px;
 }
 
@@ -37,17 +37,17 @@ html, body {
 }
 
 #box1 {
-padding-top: 13px;
-background-color: #EDB651;
+    padding-top: 13px;
+    background-color: #EDB651;
 }
 #box2 {
-padding-top: 38px;
-background-color: #8C3AFF;
+    padding-top: 38px;
+    background-color: #8C3AFF;
 }
 #box3 {
-padding-top: 110px;
-background-color: #3AADFF;
+    padding-top: 110px;
+    background-color: #3AADFF;
 }
 #box4 {
-background-color: #51ED6D;
+    background-color: #51ED6D;
 }
