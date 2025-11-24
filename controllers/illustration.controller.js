@@ -1,10 +1,9 @@
 import { crud_controller } from "./crud.controller.js"
 import media_uploader from "../media/media_uploader.js"
 
-const prefix = 'http://localhost:9000/devweb/' // TO-DO: get this from env
+const prefix = 'http://localhost:9000/devweb/'
 
 function getFilenameFromUrl(url) {
-    // Remove any trailing slash first
     if (url.endsWith("/")) {
         url = url.slice(0, -1);
     }
@@ -12,6 +11,8 @@ function getFilenameFromUrl(url) {
     return parts[parts.length - 1];
 }
 
+/* Cria um controlador que, além das funcionalidades do crud, lida com deleção de arquivos antigos
+*  e com manter URIs válidos nos modelos. */
 export function illustration_controller(model) {
     const base = crud_controller(model);
 
@@ -20,6 +21,7 @@ export function illustration_controller(model) {
 
         async create(request, response) {
             try {
+                /* Preenche o caminho do arquivo colocado no forms e guarda no modelo */
                 if (request.file && request.file.location) {
                     request.body.img_path = prefix+getFilenameFromUrl(request.file.location);
                 }

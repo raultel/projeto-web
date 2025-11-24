@@ -1,3 +1,4 @@
+/* Converte os tipos do form data de string para numero qdo necessário */
 function convert_numerical_fields(req, model) {
     const data = { ...req.body };
 
@@ -12,6 +13,7 @@ function convert_numerical_fields(req, model) {
     return data;
 }
 
+/* Cria um controlador que lida com as funcionalidades CRUD (criar, editar, listar, deletar) */
 export function crud_controller(model) {
     return {
         async findAll(request, response) {
