@@ -62,10 +62,12 @@ function build_card(item) {
     character_info.appendChild(desc_div);
 
     div.appendChild(character_info);
-    div.querySelector(".character-info").append(buttons);
 
-    if (token)
+
+    if (token) {
+        div.querySelector(".character-info").append(buttons);
         div.dataset.value = item.id;
+    }
 
     return div;
 }
