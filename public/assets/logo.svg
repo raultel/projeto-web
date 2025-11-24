@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 111.98 105.42">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #09ff50;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: #fcfdfe;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-3" d="M53.41,0h49.91v89.22h-49.91V0ZM64.75,11.62v69.19h7.82V11.62h-7.82Z"/>
+    </clipPath>
+  </defs>
+  <g id="svg2130">
+    <path id="rect2317" class="cls-4" d="M22.95,1.1h66.09c12.66,0,22.94,10.28,22.94,22.94v38.12c0,12.66-10.28,22.95-22.95,22.95H22.94C10.28,85.1,0,74.83,0,62.17V24.04C0,11.38,10.28,1.1,22.95,1.1Z"/>
+    <rect id="rect3536" class="cls-1" x=".19" y="90.28" width="15.14" height="15.14" rx="2.41" ry="2.41"/>
+    <path id="path3590" class="cls-1" d="M94.96,96.07c.98,3.26-.85,6.69-4.1,7.69s-6.7-.82-7.71-4.07.79-6.7,4.03-7.73c3.24-1.03,6.71.76,7.75,3.99"/>
+    <path id="path3590-1" class="cls-1" d="M110.29,96.07c.98,3.26-.85,6.69-4.1,7.69s-6.7-.82-7.71-4.07c-1.01-3.25.79-6.7,4.03-7.73,3.24-1.03,6.71.76,7.75,3.99"/>
+    <rect id="rect9183-0" class="cls-2" x="26.44" y="30.49" width="37.69" height="8.98"/>
+    <rect id="rect9185-6" class="cls-2" x="26.44" y="46.73" width="37.69" height="8.98"/>
+    <g class="cls-5">
+      <path id="path546" class="cls-2" d="M89.14,44.61c0,12.58-5.5,22.72-16.49,30.44l-5.07-6.34c8.45-5.6,12.89-12.88,13.32-21.84v-4.52c-.42-8.96-4.86-16.24-13.32-21.84l5.07-6.34c10.99,7.71,16.49,17.86,16.49,30.44h0Z"/>
+    </g>
+  </g>
+</svg>
