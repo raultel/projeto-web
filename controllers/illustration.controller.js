@@ -32,7 +32,15 @@ export function illustration_controller(model) {
 
         async update(request, response) {
             try {
+                const item = await model.findByPk(request.params.id);
+                if (!item) {
+                    return response.status(404).json({ error: "Item not found" });
+                }
+
                 if (request.file && request.file.location) {
+                    if (item.img_path) {
+                        await media_uploader.deleteFile(item.img_path);
+                    }
                     request.body.img_path = prefix+getFilenameFromUrl(request.file.location);
                 }
                 return base.update(request, response);

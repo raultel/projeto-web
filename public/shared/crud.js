@@ -10,6 +10,7 @@ function toDateOnly(datetimeString) {
 export function edit_action(item, modal, form) {
     modal.dataset.value=item.id;
     modal.style.display = "flex";
+    document.getElementById("file").value = "";
 
     for (const key of Object.keys(item)) {
         const input = form.querySelector(`[name="${key}"]`);
