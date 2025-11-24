@@ -28,17 +28,18 @@
 
 @media (min-width:601px) {
     .card {
-        max-height: 20vw;
+        max-height: 50vh;
     }
     .character-art {
         padding-right: 8px;
-        text-align: left;
+        text-align: right;
         width: 40%;
     }
 
     .character-art img {
-        width: 100%;
-        height: auto;
+        object-fit: scale-down;
+        max-height: 100%;
+        max-width: 100%;
     }
 
     .character-info {

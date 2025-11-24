@@ -23,7 +23,7 @@
 @media (min-width:600px) {
     .card {
         width: 60vw;
-        max-height: 25vw;
+        max-height: 30vw;
         display: flex;
         text-align: justify;
         text-justify: auto;
