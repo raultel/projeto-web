@@ -54,7 +54,8 @@ function getFileUrl(objectName) {
 }
 
 function extractKeyFromUrl(url) {
-    return url.split('/').pop();
+    const encoded = url.split('/').pop();
+    return decodeURIComponent(encoded);
 }
 
 
