@@ -12,36 +12,6 @@ import dotenv from "dotenv"
 dotenv.config()
 const secret = process.env["AUTH_SECRET"]
 
-async function register(request, response) {
-    if (!request.body.password || !request.body.email) {
-        response.status(400).send("Informe usuário e senha!")
-    }
-    let user = await User.findOne({ where: { email: request.body.email } })
-    if (user) {
-        response.status(400).send("Usuário já cadastrado!")
-    }
-    // hashing
-    const salt = bcrypt.genSaltSync()
-    const hashedPassword = bcrypt.hashSync(request.body.password, salt)
-
-    User.create({
-        email: request.body.email,
-        password: hashedPassword,
-    })
-    .then((result) => {
-        // criar e devolver o token
-        const meuToken = getToken(
-            result.dataValues.id,
-            result.dataValues.email,
-        )
-        response.status(201).send({ token: meuToken })
-    })
-    .catch((erro) => {
-        console.log(erro)
-        response.status(500).send(erro)
-    })
-}
-
 function getToken(uid, uemail) {
     const meuToken = jwt.sign(
         {
@@ -108,4 +78,4 @@ function findAll(request, response) {
     })
 }
 
-export default { register, login, validateToken, findAll }
+export default { login, validateToken, findAll }

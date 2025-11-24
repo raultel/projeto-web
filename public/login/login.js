@@ -13,13 +13,15 @@ form.addEventListener("submit", async (e) => {
             body: JSON.stringify(data)
         });
 
-        const result = await res.json();
+
+        console.log(res)
 
         if (!res.ok) {
             document.getElementById("login-response").textContent = "usuário ou senha incorretos";
             return;
         }
 
+        const result = await res.json();
         localStorage.setItem("jwtToken", result.token);
         window.location.replace("http://localhost:3000/");
 

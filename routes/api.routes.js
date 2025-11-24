@@ -16,7 +16,6 @@ const release_ctl = illustration_controller(Release);
 const illust_ctl = illustration_controller(Illustration);
 const character_ctl = illustration_controller(Character);
 
-router.post("/auth/signup", authController.register);
 router.post("/auth/signin", authController.login);
 
 router.get("/images", illust_ctl.findAll);
