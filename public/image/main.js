@@ -43,7 +43,7 @@ function build_card(item) {
     });
 
     if (token) {
-            let btns_div = setup_admin_view(item, modal, form, "images", build_card);
+        let btns_div = setup_admin_view(item, modal, form, "images", build_card);
         img_modal_content.append(btns_div);
 
         /* Esconde o modal da imagem para mostrar o modal do form */

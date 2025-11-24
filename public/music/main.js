@@ -99,7 +99,8 @@ function build_card(item) {
     `);
 
     // Corrected: querySelector, no [0]
-    div.querySelector(".album_info").append(buttons);
+    if (token)
+        div.querySelector(".album_info").append(buttons);
     div.querySelector(".links").replaceWith(
         create_links(item.youtube, item.bandcamp, item.soundcloud, item.spotify)
     );
