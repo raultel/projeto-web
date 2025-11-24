@@ -10,87 +10,76 @@ html, body {
     padding-bottom: 20px;
     text-align: center;
 }
-
 #logo img{
     width: 270px;
 }
 
 #navbar {
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
     gap: 10px;
 }
 
+/* Ícones da barra de navegação */
 .img_center img {
     margin-left: auto;
     margin-right: auto;
-    height: 59px;
+    height: 60px; /* Como os ícones tem tamanhos diferentes, precisa limitar */
     display: block;
 }
 
-#navbar a {
-    align-items: center;       /* vertical alignment */
-}
 
-
+/* A partir daqui, os ícones e banners colidem */
 @media (max-width:799px) {
-    .box {
-        display: none;
+    #navbar {
+        flex-direction: column; /* Ícones ficam agr na vertical */
     }
-
+    .box {
+        display: none; /* esconde banners */
+    }
+    /* Is ícones tem tamanhos diferente (parecem desalinhados), então vamos escolher
+     * uma largura pro div, centralizar ele na vertical e alinhar os ícones para encostar
+     * no seu lado esquedo.
+    */
     .img_center {
-        width: 200px;        /* choose your fixed width */
-        margin: 0 auto;      /* centers the box */
+        width: 200px;
+        margin: 0 auto;
         display: flex;
-        justify-content: flex-start;  /* makes images touch left side */
-            }
+        justify-content: flex-start;
+    }
 
     .img_center img {
-        margin-left: 0;
-        display: block;
-        max-width: 100%;
-        height: auto;
-    }
-
-    #red_img {
-        height: 87px;
+        margin-left: 40px;
     }
 
 }
 
+/* A partir daqui, os banners cabem */
 @media (min-width:800px) {
     #navbar {
-        margin-left: 10vw;
-        margin-right: 10vw;
-        flex-direction: row;
-        height: 100%;
+        margin-left: 8vw;
+        margin-right: 8vw;
     }
 
     .box {
         margin-top:0;
-        width: 25vh;
+        width: 20vw;
+        max-width: 250px;
         height: 500px;
 
+        /* Imagens começam na parte inferior do div */
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;  /* pushes children to bottom */
+        justify-content: flex-end;
+    }
+
+    .box img {
+        max-height: 100%;
+        object-fit: contain;
     }
 }
 
-@media (min-width:1000px) {
-    #navbar {
-        margin-left: 18vw;
-        margin-right: 18vw;
-        flex-direction: row;
-    }
-
-    .box {
-        width: 27vh;
-    }
-}
-
-
+/* Cores dos banners */
 
 #box1 {
     background-color: #EDB651;
