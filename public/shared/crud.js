@@ -6,12 +6,14 @@ function toDateOnly(datetimeString) {
     return `${match[1]}-${match[2]}-${match[3]}`;
 }
 
-
+/* Função chamada quando se clica no botão de editar */
 export function edit_action(item, modal, form) {
+    /* Revela o modal e guarda o ID */
     modal.dataset.value=item.id;
     modal.style.display = "flex";
     document.getElementById("file").value = "";
 
+    /* Preenche o formulário com os valores do item que será atualizado/editado */
     for (const key of Object.keys(item)) {
         const input = form.querySelector(`[name="${key}"]`);
         if (!input) continue;
@@ -23,13 +25,16 @@ export function edit_action(item, modal, form) {
     }
 }
 
+/* Função chamada ao clicar no botão de deletar o card */
 export async function delete_item(model_name, id) {
+    /* Deleta do bd */
     try {
         await api_delete(model_name, id);
     } catch (err) {
         console.error(err);
     }
 
+    /* Pega o card do DOM e remove apenas ele */
     document.querySelectorAll(".card").forEach(function(card) {
         if (Number(card.dataset.value) === Number(id)) {
             card.remove();
@@ -37,14 +42,19 @@ export async function delete_item(model_name, id) {
     });
 }
 
+/* Função chamada após um novo item ser inserido no bd */
 function append_new_item(model_name, item, build_card) {
+    /* Cria um card e insere no DOM */
     const div = build_card(item);
     document.getElementById(model_name + "-collection").appendChild(div);
 }
 
+/* Função chamada após um item ser atualizado no bd */
 function update_item_div(item, id, build_card) {
+    /* Cria o card atualizado */
     const new_card = build_card(item.data);
 
+    /* Procura o card antigo e substitui pelo novo no DOM */
     document.querySelectorAll(".card").forEach(function(card) {
         if (card.dataset.value === id) {
             card.replaceWith(new_card);
@@ -52,6 +62,7 @@ function update_item_div(item, id, build_card) {
     });
 }
 
+/* Prepara o formulário usado para editar e atualizar cards/items */
 export function setup_form(form, modal, model_name, build_card)
 {
     form.addEventListener("submit", async (e) => {
@@ -59,14 +70,17 @@ export function setup_form(form, modal, model_name, build_card)
 
         const formData = new FormData(form);
 
+        /* O dataset.value guarda -1 se nenhum item está sendo criado
+         * (ou seja, um novo item foi criado) e o ID do item a ser editado,
+         * caso se esteja no meio de uma atualização */
         try {
             if (Number(modal.dataset.value) === -1) {
-                let item = await api_create(model_name, formData);
-                append_new_item(model_name, item, build_card);
+                let item = await api_create(model_name, formData); // BD
+                append_new_item(model_name, item, build_card); // DOM
             }
             else {
-                let item = await api_update(model_name, modal.dataset.value, formData);
-                update_item_div(item, modal.dataset.value, build_card)
+                let item = await api_update(model_name, modal.dataset.value, formData); // BD
+                update_item_div(item, modal.dataset.value, build_card) // DOM
             }
         } catch (err) {
             console.error(err);
@@ -74,6 +88,7 @@ export function setup_form(form, modal, model_name, build_card)
     });
 }
 
+/* Essa função cria e prepara os botões EDIT e DELETE do crud para um card */
 export function setup_admin_view(item, modal, form, model_name, build_card) {
     const div = document.createElement("div");
     div.classList.add("admin-buttons");
@@ -84,9 +99,6 @@ export function setup_admin_view(item, modal, form, model_name, build_card) {
     `
     const deleteBtn = div.getElementsByClassName('delete_btn')[0];
     const editBtn   = div.getElementsByClassName('edit_btn')[0];
-
-    deleteBtn.value = item.id;
-    editBtn.value   = item.id;
 
     editBtn.addEventListener("click", () => edit_action(item, modal, form));
     deleteBtn.addEventListener("click", () => delete_item(model_name, item.id));

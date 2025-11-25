@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     background-color: black;
-    height: 100%; /* ensures body fills the viewport */
+    height: 100%;
 }
 
 h1, h2, p , div{
@@ -28,14 +28,11 @@ a { text-decoration: none; }
     #navbar {
         gap: 30px;
     }
-
 }
 
 #navbar > a > img {
     height: 50px;
 }
-
-
 
 .admin-buttons{
     margin-top: 10px;
