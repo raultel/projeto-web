@@ -6,6 +6,7 @@ const form = document.getElementById("model-form");
 const modal = document.getElementById("register-modal");
 const model_name = "releases"
 
+/* Converte form date em texo formatado, ex: April 8th, 2024 */
 function formatDate(input) {
     const date = new Date(input);
 
@@ -36,10 +37,12 @@ function formatDate(input) {
     return `${month} ${ordinal(day)} ${year}`;
 }
 
+/* Converte \n em quebras de linha */
 function withBreaks(text) {
     return text.replace(/\n/g, "<br>");
 }
 
+/* Cria um ícone da rede social para cada link */
 function create_links(youtube, bandcamp, soundcloud, spotify) {
     let div = document.createElement("div");
     div.classList.add("links");
@@ -68,17 +71,17 @@ function create_links(youtube, bandcamp, soundcloud, spotify) {
         `);
     }
 
-
     return div;
 }
 
-
+/* Dado um item no banco de dados, cria um card com as informações */
 function build_card(item) {
     let div = document.createElement("div");
     let buttons;
     div.classList.add("card");
 
     if (token) {
+        /* Botões de edit e delete */
         buttons = setup_admin_view(item, modal, form, model_name, list_items);
     }
 
@@ -87,31 +90,29 @@ function build_card(item) {
         <img src="${item.img_path}" alt="">
         </div>
         <div class="album_info">
-        <div class="item-field"><h1>${item.title}</h1></div>
-        <div class="item-field">Release: ${formatDate(item.date)}</div>
-        <div class="item-field">Duration: ${item.duration}</div>
-        <div class="links"></div>
-        <br>
-        <div class="item-field"><strong>${withBreaks(item.subtitle)}</strong></div>
-        <br>
-        <div class="item-field"><p>${item.description}</p></div>
+            <div class="item-field"><h1>${item.title}</h1></div>
+            <div class="item-field">Release: ${formatDate(item.date)}</div>
+            <div class="item-field">Duration: ${item.duration}</div>
+            <div class="links"></div>
+            <br>
+            <div class="item-field"><strong>${withBreaks(item.subtitle)}</strong></div>
+            <br>
+            <div class="item-field"><p>${item.description}</p></div>
         </div>
     `);
 
-    // Corrected: querySelector, no [0]
-    if (token)
-        div.querySelector(".album_info").append(buttons);
-    div.querySelector(".links").replaceWith(
-        create_links(item.youtube, item.bandcamp, item.soundcloud, item.spotify)
-    );
-
-    if (token)
+    if (token) {
+        /* Se admin, guarda o id do item e coloca os botões */
         div.dataset.value = item.id;
+        div.querySelector(".album_info").append(buttons);
+    }
+
+    div.querySelector(".links").replaceWith(create_links(item.youtube, item.bandcamp, item.soundcloud, item.spotify));
 
     return div;
 }
 
-
+/* Pega todos os itens do bd e cria cards no DOM */
 async function list_items() {
     document.getElementById("releases-collection").innerHTML = ""
     const musics = await api_get(model_name);
@@ -122,9 +123,8 @@ async function list_items() {
     }
 }
 
-
 await list_items();
 if (token) {
     await setup_form(form, modal, model_name, build_card);
-    document.getElementsByClassName("open-btn")[0].style = "display: block"
+    document.getElementsByClassName("open-btn")[0].style = "display: block" // botão de adicionar itens
 }

@@ -20,6 +20,7 @@
 }
 
 
+/* >=600px: Duas colunas, uma de imagem e outra de info lado a lado */
 @media (min-width:600px) {
     .card {
         width: 60vw;
@@ -45,6 +46,7 @@
     }
 }
 
+/* Telas menores: 1 coluna, imagens são seguidas das infos dos albuns */
 @media (max-width:599px) {
     .card {
         width: 90vw;
