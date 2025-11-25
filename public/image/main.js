@@ -11,10 +11,12 @@ function show_img_modal(id, modal) {
     modal.style = "display: flex";
 }
 
+/* Dado um item no banco de dados, cria um card com as informações */
 function build_card(item) {
     let card = document.createElement("div");
     card.classList.add("card");
 
+    /* Card da imagem, apenas um botão com uma imagem */
     let img_btn = document.createElement("button");
     let img = document.createElement("img");
     img.classList.add("list-img")
@@ -24,6 +26,7 @@ function build_card(item) {
     img_btn.appendChild(img);
     card.appendChild(img_btn);
 
+    /* Clicar no botão abre um modal com mais informações */
     let img_modal = document.createElement("div");
     let img_modal_content = document.createElement("div");
     let img_zoom = document.createElement("img");
@@ -46,10 +49,9 @@ function build_card(item) {
         let btns_div = setup_admin_view(item, modal, form, "images", build_card);
         img_modal_content.append(btns_div);
 
-        /* Esconde o modal da imagem para mostrar o modal do form */
+        /* Esconde o modal da imagem quando se edita ou deleta um item */
         for (let btn of btns_div.children) {
             btn.addEventListener("click", function(e) {
-
                 btn.parentElement.parentElement.parentElement.style= "display: none";
             });
         }
@@ -62,6 +64,8 @@ function build_card(item) {
     return card;
 }
 
+
+/* Pega todos os itens do bd e cria cards no DOM */
 async function list_items() {
     container.innerHTML = ""
     const items = await api_get(model_name);

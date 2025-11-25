@@ -20,6 +20,7 @@
 }
 
 
+/* Imagem fica embaixo do texto em telas pequenas */
 @media (max-width:600px) {
     #wrapper {
         flex-direction: column;

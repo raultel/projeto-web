@@ -13,7 +13,6 @@
     font-style: normal;
     width: 80vw;
 
-
     display: flex;
     text-align: justify;
     text-justify: auto;
@@ -26,6 +25,7 @@
 }
 
 
+/* Telas grandes: Imagem do personagem e informações lado a lado */
 @media (min-width:601px) {
     .card {
         max-height: 50vh;
@@ -48,10 +48,11 @@
         justify-content: space-around;
         padding-left: 8px;
         width: 55%;
-        overflow-y: auto;
+        overflow-y: auto; /* scroll */
     }
 }
 
+/* Telas pequenas: Imagens do personagens em cima de suas informações */
 @media (max-width:600px) {
     .card {
         flex-direction: column;

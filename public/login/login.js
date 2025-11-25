@@ -13,7 +13,6 @@ form.addEventListener("submit", async (e) => {
             body: JSON.stringify(data)
         });
 
-
         console.log(res)
 
         if (!res.ok) {

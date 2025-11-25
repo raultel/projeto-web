@@ -10,6 +10,7 @@ function withBreaks(text) {
     return text.replace(/\n/g, "<br>");
 }
 
+/* Cria um div com texto dentro */
 function create_item_field(content)
 {
     let div = document.createElement("div");
@@ -18,6 +19,7 @@ function create_item_field(content)
     return div;
 }
 
+/* Dado um item no banco de dados, cria um card com as informações */
 function build_card(item) {
     let div = document.createElement("div");
     let buttons;
@@ -43,7 +45,8 @@ function build_card(item) {
         name_div.appendChild(name);
 
     character_info.appendChild(name_div);
-    console.log("aliasses:", item.aliases)
+
+    /* Campos opcionais */
     if (item.aliases !== "")
         character_info.appendChild(create_item_field('Outros nomes: '+item.aliases));
     if (item.age !== "" && item.age !== 0)
@@ -72,7 +75,7 @@ function build_card(item) {
     return div;
 }
 
-
+/* Pega todos os itens do bd e cria cards no DOM */
 async function list_items() {
     document.getElementById("characters-collection").innerHTML = ""
     const musics = await api_get(model_name);
@@ -82,7 +85,6 @@ async function list_items() {
         document.getElementById("characters-collection").appendChild(div);
     }
 }
-
 
 await list_items();
 if (token) {
