@@ -67,14 +67,19 @@ function build_card(item) {
 
 /* Pega todos os itens do bd e cria cards no DOM */
 async function list_items() {
-    container.innerHTML = ""
+    container.innerHTML = "";
     const items = await api_get(model_name);
     for(const item of items) {
-        const div = build_card(item)
+        const div = build_card(item);
         container.appendChild(div);
     }
 }
 
+/* Fecha modal de imagem quando clica fora */
+window.addEventListener("click", function(e){
+    if(e.target.classList.contains("img-modal"))
+        e.target.style.display="none";
+});
 
 await list_items();
 if (token) {
